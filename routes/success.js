@@ -1,8 +1,16 @@
-const express=require('express');
-const path=require('path');
-const successDir=require('../helper/path');
-const router=express.Router();
-router.get('/success', (request, response, next) => {
-response.sendFile(path.join(successDir,'views','success.html'));
+const express = require('express');
+const path = require('path');
+
+const rootDir = require('../util/path');
+
+const router = express.Router();
+
+router.get('/success', (req, res, next) => {
+res.sendFile(path.join(rootDir, 'views', 'success.html'));
 })
-module.exports=router;
+
+router.post('/success', (req, res, next) => {
+res.redirect('/');
+})
+
+module.exports = router;
